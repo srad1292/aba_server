@@ -13,6 +13,7 @@ public class HttpExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ABAErrorMessage> missingBody(HttpMessageNotReadableException e) {
+    	e.printStackTrace();
         ABAErrorMessage errorMessage = new ABAErrorMessage("Missing request body"); 
         return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);	
     }
