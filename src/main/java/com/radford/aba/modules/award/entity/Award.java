@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import com.radford.aba.shared.validator.NotOnlyWhiteSpaceConstraint;
 
@@ -20,6 +21,7 @@ public class Award {
 	private Integer id;
 	
 	@Column(name="award_name",length=30)
+	@Size(min=1, max=30)
 	@NotOnlyWhiteSpaceConstraint
 	private String awardName;
 
