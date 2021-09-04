@@ -56,8 +56,8 @@ public class TeamController {
 		if(team.getId() != null) {
 			team.setId(null);
 		}
-		Team createdEvent = teamRepository.save(team);
-		return new ResponseEntity<>(createdEvent, HttpStatus.CREATED);
+		Team createdTeam = teamRepository.save(team);
+		return new ResponseEntity<>(createdTeam, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/team/{teamId}")
