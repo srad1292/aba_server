@@ -9,5 +9,7 @@ import com.radford.aba.modules.person.entity.Person;
 public interface PersonRepository extends CrudRepository<Person, Integer> {
 
 	Page<Person> findAll(Pageable page);
+	
+	Page<Person> findAllByFullNameContainsIgnoreCase(Pageable page, String fullName);
 
 }

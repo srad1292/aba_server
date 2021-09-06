@@ -52,12 +52,17 @@ public class PersonController {
 			@RequestParam(defaultValue="1") Integer pageNumber,
 			@RequestParam(defaultValue="5") Integer pageSize,
 			@RequestParam(defaultValue="id") String sortBy,
-			@RequestParam(defaultValue="ASC") String sortDirection
+			@RequestParam(defaultValue="ASC") String sortDirection,
+			@RequestParam(required=false) String playerName
 	) {
 		pageNumber--;
 		Sort.Direction direction = sortDirection.toLowerCase().equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
 		Pageable page = PageRequest.of(pageNumber, pageSize, Sort.by(direction, sortBy));
-		return personRepository.findAll(page);
+		if(playerName == null) {
+			return personRepository.findAll(page);
+		} else {
+			return personRepository.findAllByFullNameContainsIgnoreCase(page, playerName);
+		}
 		
 	}
 	
