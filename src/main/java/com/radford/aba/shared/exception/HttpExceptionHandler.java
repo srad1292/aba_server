@@ -17,6 +17,7 @@ public class HttpExceptionHandler {
     	ABAErrorMessage errorMessage = new ABAErrorMessage("Missing request body"); 
     	
     	String message = NestedExceptionUtils.getMostSpecificCause(e).getMessage();
+    	e.printStackTrace();
     	
     	if(message.contains("java.util.Date")) {
     		errorMessage = new ABAErrorMessage("Date format should be yyyy-mm-dd");
